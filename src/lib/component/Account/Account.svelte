@@ -16,7 +16,7 @@
 			{#if $userStore.photoURL}
 				<div
 					class="h-8 w-8 rounded-full bg-cover bg-center"
-					style={`background-image: url("${$userStore.photoURL}")`}
+					style:background-image={`url("${$userStore.photoURL}")`}
 				/>
 			{:else}
 				<div class="flex h-8 w-8 items-center justify-center rounded-full border">

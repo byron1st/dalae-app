@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { setContext } from 'svelte';
+	import { useQueryClient } from '@tanstack/svelte-query';
+	import { createMomentsStores, momentsStoresKey } from '$lib/store/moments';
 	import Account from '$lib/component/Account/Account.svelte';
 	import MomentInput from '$lib/component/MomentInput/MomentInput.svelte';
 	import MomentsList from '$lib/component/MomentsList/MomentsList.svelte';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	const client = useQueryClient();
+	setContext(momentsStoresKey, createMomentsStores(client));
 </script>
 
 <div class="flex w-full flex-col gap-8">
@@ -12,6 +15,6 @@
 
 	<main class="flex flex-col gap-12">
 		<MomentInput />
-		<MomentsList moments={data.moments} />
+		<MomentsList />
 	</main>
 </div>

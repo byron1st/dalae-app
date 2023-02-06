@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import firebaseAdmin from 'firebase-admin';
+import type { App } from 'firebase-admin/app';
 import { dev } from '$app/environment';
 import { GCP_PROJECT_ID, GCP_CLIENT_EMAIL, GCP_PRIVATE_KEY } from '$env/static/private';
-import type { App } from 'firebase-admin/app';
 
 let app: App;
 

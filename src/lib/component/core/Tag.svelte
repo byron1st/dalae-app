@@ -3,9 +3,10 @@
 
 	export let tag: string;
 	export let remove: undefined | (() => void) = undefined;
+	export let size: 'xs' | 'sm' = 'sm';
 </script>
 
-<div class="mr-2 text-sm text-blue-800">
+<div class="mr-2 text-{size} text-blue-800">
 	#{tag}
 	{#if remove}
 		<span>

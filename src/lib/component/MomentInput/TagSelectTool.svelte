@@ -57,6 +57,7 @@
 		<input
 			class="w-full rounded border border-gray-400 px-4 py-2 outline-none transition focus:border-blue-400"
 			type="text"
+			placeholder="new tag..."
 			bind:value
 			on:keydown={onKeyDown}
 		/>
