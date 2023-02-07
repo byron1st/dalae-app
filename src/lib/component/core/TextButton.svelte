@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let text: string;
-	export let onClick: () => void | Promise<void>;
+	export let onClick: () => void | boolean | Promise<void | boolean>;
 	export let variant: 'default' | 'primary' | 'warning' = 'default';
 </script>
 

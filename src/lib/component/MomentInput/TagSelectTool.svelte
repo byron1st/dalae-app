@@ -50,7 +50,7 @@
 	<Modal on:close={toggle} title="Add tags">
 		<div class="flex flex-wrap">
 			{#each currentTags as tag, index}
-				<Tag {tag} remove={() => removeTag(index)} />
+				<Tag {tag} on:remove={() => removeTag(index)} />
 			{/each}
 		</div>
 

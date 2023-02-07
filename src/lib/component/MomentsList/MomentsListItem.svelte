@@ -8,10 +8,9 @@
 	export let moment: MomentDTO;
 	let hovered: boolean = false;
 	let modal: boolean = false;
+	let textbox: HTMLDivElement;
 
-	function toggleModal() {
-		modal = !modal;
-	}
+	$: isTruncated = textbox ? textbox.scrollHeight !== textbox.clientHeight : false;
 </script>
 
 <article
@@ -22,10 +21,10 @@
 	<div class="flex w-full items-center justify-between">
 		<MomentDateText date={moment.date} />
 
-		{#if hovered}<TextButton text="update" onClick={toggleModal} />{/if}
+		{#if hovered}<TextButton text="update" onClick={() => (modal = true)} />{/if}
 	</div>
 
-	<div>
+	<div class="ellipsis" bind:this={textbox}>
 		{#each moment.text.split('\n') as paragraph}
 			{#if paragraph}
 				<p>{paragraph}</p>
@@ -35,6 +34,17 @@
 		{/each}
 	</div>
 
+	{#if isTruncated}
+		<div class="flex w-full flex-row justify-end">
+			<TextButton
+				text="more"
+				onClick={() => {
+					textbox.className = textbox.className.replace('ellipsis', '');
+				}}
+			/>
+		</div>
+	{/if}
+
 	<div class="flex flex-wrap">
 		{#each moment.tags as tag}
 			<Tag {tag} />
@@ -43,4 +53,14 @@
 </article>
 <hr />
 
-{#if modal}<MomentUpdateModal on:close={toggleModal} {moment} />{/if}
+{#if modal}<MomentUpdateModal on:close={() => (modal = false)} {moment} />{/if}
+
+<style>
+	.ellipsis {
+		display: -webkit-box;
+		-webkit-line-clamp: 5;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		white-space: pre-wrap;
+	}
+</style>
