@@ -12,3 +12,5 @@ vite.config.ts.timestamp-*
 firebase.json
 *-debug.log
 firebase-adminsdk-*
+/.vscode
+/.idea

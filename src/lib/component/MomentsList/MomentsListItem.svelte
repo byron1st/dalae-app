@@ -1,16 +1,17 @@
 <script lang="ts">
 	import type { MomentDTO } from '$lib/dto/moment';
+	import { convert } from '$lib/content.js';
 	import MomentDateText from '$lib/component/core/MomentDateText.svelte';
 	import Tag from '$lib/component/core/Tag.svelte';
 	import TextButton from '$lib/component/core/TextButton.svelte';
 	import MomentUpdateModal from '$lib/component/MomentsList/MomentUpdateModal/MomentUpdateModal.svelte';
 
 	export let moment: MomentDTO;
-	let hovered: boolean = false;
-	let modal: boolean = false;
-	let textbox: HTMLDivElement;
+	let hovered = false;
+	let modal = false;
+	let textBox: HTMLDivElement;
 
-	$: isTruncated = textbox ? textbox.scrollHeight !== textbox.clientHeight : false;
+	$: isTruncated = textBox ? textBox.scrollHeight !== textBox.clientHeight : false;
 </script>
 
 <article
@@ -24,14 +25,8 @@
 		{#if hovered}<TextButton text="update" onClick={() => (modal = true)} />{/if}
 	</div>
 
-	<div class="ellipsis" bind:this={textbox}>
-		{#each moment.text.split('\n') as paragraph}
-			{#if paragraph}
-				<p>{paragraph}</p>
-			{:else}
-				<p class="h-4" />
-			{/if}
-		{/each}
+	<div class="ellipsis" bind:this={textBox}>
+		{@html convert(moment.text)}
 	</div>
 
 	{#if isTruncated}
@@ -39,7 +34,7 @@
 			<TextButton
 				text="more"
 				onClick={() => {
-					textbox.className = textbox.className.replace('ellipsis', '');
+					textBox.className = textBox.className.replace('ellipsis', '');
 				}}
 			/>
 		</div>

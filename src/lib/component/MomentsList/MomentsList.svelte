@@ -8,7 +8,7 @@
 </script>
 
 <div class="flex flex-col items-center">
-	<div class="flex w-full max-w-xs flex-col gap-2 pb-10">
+	<div class="flex w-full max-w-xs flex-col pb-10">
 		{#if $data.isLoading}
 			<div class="text-center text-xs">Loading...</div>
 		{:else if $data.isError}
