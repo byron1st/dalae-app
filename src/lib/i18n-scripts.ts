@@ -21,6 +21,7 @@ export type Script = {
 	'momentinput.tag.input': string;
 	'momentinput.tag.modal.header': string;
 	'momentupdate.modal.header': string;
+	'momentinput.error.emptytext': string;
 	'moment.showmore': string;
 	'moments.listmore': string;
 	'moments.loaderror': string;
@@ -43,6 +44,7 @@ const scripts: Scripts = {
 		'momentinput.textarea.placeholder': '',
 		'momentinput.tag.input': '',
 		'momentinput.tag.modal.header': '',
+		'momentinput.error.emptytext': '',
 		'momentupdate.modal.header': '',
 		'moment.showmore': '',
 		'moments.listmore': '',
@@ -65,6 +67,7 @@ const scripts: Scripts = {
 		'momentinput.textarea.placeholder': 'Please enter your content',
 		'momentinput.tag.input': 'New tag...',
 		'momentinput.tag.modal.header': 'Add tags',
+		'momentinput.error.emptytext': 'empty text',
 		'momentupdate.modal.header': 'Update Moment',
 		'moment.showmore': 'more',
 		'moments.listmore': 'load more',
@@ -87,6 +90,7 @@ const scripts: Scripts = {
 		'momentinput.textarea.placeholder': '내용을 입력하세요',
 		'momentinput.tag.input': '새로운 태그',
 		'momentinput.tag.modal.header': '태그를 입력하세요',
+		'momentinput.error.emptytext': '빈 내용입니다',
 		'momentupdate.modal.header': '내용 수정',
 		'moment.showmore': '더보기',
 		'moments.listmore': '더 불러오기',

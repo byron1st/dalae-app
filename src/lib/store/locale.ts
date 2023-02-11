@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import scripts, { type Scripts } from '$lib/i18n/scripts';
+import scripts, { type Scripts } from '$lib/i18n-scripts';
 
 type LocaleStr = keyof Scripts;
 

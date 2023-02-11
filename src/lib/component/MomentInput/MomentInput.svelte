@@ -27,7 +27,7 @@
 
 	function onClick() {
 		if (!text || !text.trim()) {
-			error = 'empty text';
+			error = $s['momentinput.error.emptytext'];
 			return undefined;
 		}
 
