@@ -1,4 +1,8 @@
+<script>
+	import { s } from '$lib/store/script';
+</script>
+
 <div class="flex flex-col items-center text-center">
-	<h1 class="font-black text-3xl">Dalae</h1>
-	<p>record short moments of your daily life to remember</p>
+	<h1 class="text-3xl font-black">{$s.appTitle}</h1>
+	<p>{$s.appDescription}</p>
 </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { s } from '$lib/store/script';
 	import Tag from '$lib/component/core/Tag.svelte';
 
 	export let tags: string[] = [];
@@ -24,7 +25,7 @@
 	<input
 		class="rounded border border-white px-2 py-1 text-xs outline-none transition focus:border-blue-400"
 		type="text"
-		placeholder="new tag..."
+		placeholder={$s['momentinput.tag.input']}
 		bind:value={tag}
 		on:keydown={onKeyDown}
 	/>

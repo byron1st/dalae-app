@@ -3,6 +3,7 @@
 	import dayjs from 'dayjs';
 	import type { MomentDTO } from '$lib/dto/moment';
 	import { momentsStoresKey, type MomentsStoresType } from '$lib/store/moments';
+	import { s } from '$lib/store/script';
 	import Modal from '$lib/component/core/Modal.svelte';
 	import Button from '$lib/component/core/Button.svelte';
 	import TextArea from '$lib/component/core/TextArea.svelte';
@@ -59,7 +60,11 @@
 	});
 </script>
 
-<Modal title="Moment" on:close={() => dispatch('close')} preventCloseFromOverlayClick>
+<Modal
+	title={$s['momentupdate.modal.header']}
+	on:close={() => dispatch('close')}
+	preventCloseFromOverlayClick
+>
 	<div class="flex h-full w-full flex-col gap-2">
 		<div class="flex-1">
 			<TextArea bind:value={text} bind:error fixedRows={10} />
@@ -70,11 +75,11 @@
 	</div>
 
 	<div class="flex h-full items-center justify-between" slot="footer" let:close={closeModal}>
-		<Button text="Cancel" onClick={closeModal} />
+		<Button text={$s.cancel} onClick={closeModal} />
 
 		<div class="gap-2">
 			<Button
-				text="Delete"
+				text={$s.delete}
 				variant="warning"
 				onClick={async () => {
 					const success = await confirmDelete();
@@ -82,7 +87,7 @@
 				}}
 			/>
 			<Button
-				text="Update"
+				text={$s.update}
 				variant="primary"
 				onClick={() => {
 					updateMoment();

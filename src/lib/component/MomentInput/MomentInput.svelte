@@ -2,6 +2,7 @@
 	import { getContext } from 'svelte';
 	import dayjs from 'dayjs';
 	import { momentsStoresKey, type MomentsStoresType } from '$lib/store/moments';
+	import { s } from '$lib/store/script';
 	import Button from '$lib/component/core/Button.svelte';
 	import Tag from '$lib/component/core/Tag.svelte';
 	import TextArea from '$lib/component/core/TextArea.svelte';
@@ -80,7 +81,7 @@
 						<input id="public-selection" type="checkbox" />
 						<label for="public-selection">Public</label>
 					</div> -->
-					<Button text="Record" variant="primary" {onClick} />
+					<Button text={$s['momentinput.record']} variant="primary" {onClick} />
 				</div>
 			</div>
 

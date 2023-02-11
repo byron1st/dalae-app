@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { s } from '$lib/store/script';
 	import Button from '$lib/component/core/Button.svelte';
 	import IconButton from '$lib/component/core/IconButton.svelte';
 	import Modal from '$lib/component/core/Modal.svelte';
@@ -25,7 +26,7 @@
 <IconButton icon="calendar-days" onClick={toggle} />
 
 {#if show}
-	<Modal on:close={toggle} title="Select a date">
+	<Modal on:close={toggle} title={$s['momentinput.date.modal.header']}>
 		<input
 			class="w-full rounded border border-gray-400 px-4 py-2 outline-none transition focus:border-blue-400"
 			type="datetime-local"
@@ -33,8 +34,8 @@
 		/>
 
 		<div class="flex h-full w-full items-center justify-end gap-2" slot="footer">
-			<Button text="Cancel" onClick={cancel} />
-			<Button text="Update" variant="primary" onClick={update} />
+			<Button text={$s.cancel} onClick={cancel} />
+			<Button text={$s.update} variant="primary" onClick={update} />
 		</div>
 	</Modal>
 {/if}

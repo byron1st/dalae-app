@@ -7,10 +7,13 @@
 	import { create, remove } from '$lib/api';
 	import { auth } from '$lib/database/firebase';
 	import userStore from '$lib/store/user';
+	import { initLocale, locale } from '$lib/store/locale';
 	import 'dayjs/locale/ko';
 	import '../app.css';
 
-	dayjs.locale('ko');
+	initLocale();
+
+	dayjs.locale($locale);
 
 	const queryClient = new QueryClient({
 		defaultOptions: { queries: { enabled: browser, refetchOnWindowFocus: dev } }

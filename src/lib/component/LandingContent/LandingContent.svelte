@@ -1,9 +1,10 @@
 <script>
-	import { signInWithPopup, GoogleAuthProvider, getIdToken } from 'firebase/auth';
+	import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 	import { goto } from '$app/navigation';
 	import { auth } from '$lib/database/firebase';
-	import Button from '$lib/component/core/Button.svelte';
 	import userStore from '$lib/store/user';
+	import { s } from '$lib/store/script';
+	import Button from '$lib/component/core/Button.svelte';
 
 	const provider = new GoogleAuthProvider();
 
@@ -20,8 +21,8 @@
 
 <div class="flex justify-center">
 	{#if $userStore?.email}
-		<Button text="Go to the App" onClick={gotoApp} />
+		<Button text={$s['landingpage.gotoapp']} onClick={gotoApp} />
 	{:else}
-		<Button text="Sign In" onClick={showSignInPopup} />
+		<Button text={$s.signin} onClick={showSignInPopup} />
 	{/if}
 </div>

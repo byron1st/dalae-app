@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { MomentDTO } from '$lib/dto/moment';
 	import { convert } from '$lib/content.js';
+	import { s } from '$lib/store/script';
 	import MomentDateText from '$lib/component/core/MomentDateText.svelte';
 	import Tag from '$lib/component/core/Tag.svelte';
 	import TextButton from '$lib/component/core/TextButton.svelte';
@@ -22,7 +23,9 @@
 	<div class="flex w-full items-center justify-between">
 		<MomentDateText date={moment.date} />
 
-		{#if hovered}<TextButton text="update" onClick={() => (modal = true)} />{/if}
+		{#if hovered}
+			<TextButton text={$s.update.toLocaleLowerCase()} onClick={() => (modal = true)} />
+		{/if}
 	</div>
 
 	<div class="ellipsis" bind:this={textBox}>
@@ -32,7 +35,7 @@
 	{#if isTruncated}
 		<div class="flex w-full flex-row justify-end">
 			<TextButton
-				text="more"
+				text={$s['moment.showmore']}
 				onClick={() => {
 					textBox.className = textBox.className.replace('ellipsis', '');
 				}}
