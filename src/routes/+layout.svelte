@@ -2,18 +2,20 @@
 	import { onMount } from 'svelte';
 	import { getIdToken, onAuthStateChanged } from 'firebase/auth';
 	import dayjs from 'dayjs';
+	import relativeTime from 'dayjs/plugin/relativeTime';
+	import localizedFormat from 'dayjs/plugin/localizedFormat';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 	import { browser, dev } from '$app/environment';
 	import { create, remove } from '$lib/api';
 	import { auth } from '$lib/database/firebase';
 	import userStore from '$lib/store/user';
-	import { initLocale, locale } from '$lib/store/locale';
+	import { initLocale } from '$lib/store/locale';
 	import 'dayjs/locale/ko';
 	import '../app.css';
 
 	initLocale();
-
-	dayjs.locale($locale);
+	dayjs.extend(relativeTime);
+	dayjs.extend(localizedFormat);
 
 	const queryClient = new QueryClient({
 		defaultOptions: { queries: { enabled: browser, refetchOnWindowFocus: dev } }
