@@ -93,10 +93,10 @@ export function mutations(client: QueryClient): MomentsMutations {
 			{
 				onMutate,
 				onError,
-				onSuccess: (removedID, _variables, context) => {
+				onSuccess: (removedId, _variables, context) => {
 					if (!context) return;
 
-					const { pages, indexes } = getNewMomentsData(context.previousData.pages, removedID);
+					const { pages, indexes } = getNewMomentsData(context.previousData.pages, removedId);
 					if (!indexes) return;
 
 					pages[indexes.page].splice(indexes.item, 1);
@@ -113,14 +113,14 @@ function onError(err: Error) {
 
 function getNewMomentsData(
 	previousPages: MomentDTO[][],
-	itemID?: string
+	itemId?: string
 ): { pages: MomentDTO[][]; indexes?: { page: number; item: number } } {
 	const pages: MomentDTO[][] = JSON.parse(JSON.stringify(previousPages));
-	if (!itemID) return { pages };
+	if (!itemId) return { pages };
 
 	let itemIndex = -1;
 	const pageIndex = pages.findIndex((page) => {
-		const index = page.findIndex((pageItem) => pageItem.id === itemID);
+		const index = page.findIndex((pageItem) => pageItem.id === itemId);
 		if (index !== -1) {
 			itemIndex = index;
 			return true;

@@ -8,7 +8,7 @@ import type { RequestHandler } from './$types';
 export const PUT = (async ({ request, locals, params }) => {
 	try {
 		if (!locals.uid) throw new APIError(401);
-		if (!params.momentID) throw new APIError(400);
+		if (!params.momentId) throw new APIError(400);
 
 		const body: Partial<MomentDTO> = await request.json();
 
@@ -19,7 +19,7 @@ export const PUT = (async ({ request, locals, params }) => {
 
 		const col = await momentsCol();
 
-		const _id = new ObjectId(params.momentID);
+		const _id = new ObjectId(params.momentId);
 		await col.updateOne({ _id }, { $set: setters });
 
 		const moment = await col.findOne({ _id });
@@ -34,10 +34,10 @@ export const PUT = (async ({ request, locals, params }) => {
 export const DELETE = (async ({ locals, params }) => {
 	try {
 		if (!locals.uid) throw error(401);
-		if (!params.momentID) throw new APIError(400);
+		if (!params.momentId) throw new APIError(400);
 
 		const col = await momentsCol();
-		await col.deleteOne({ _id: new ObjectId(params.momentID) });
+		await col.deleteOne({ _id: new ObjectId(params.momentId) });
 
 		return json({ success: true });
 	} catch (err) {
